@@ -1,0 +1,90 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<section class="hero">
+    <div class="hero--content">
+        <div class="hero--content--intro">
+            <img id="profile_pic" src="{% static 'images/profile_pic.jpg' %}">
+            <h1 class="intro--name">Alexandre <br> Tchami</h1>
+        </div>
+
+        <div class="hero--content--subheadline">
+
+            <h3 class="description">Développeur Fullstack</h3>
+            <p class="slogan">Je suis à l'écoute d'opportunités en développement de site et application web.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="container section--2">
+
+    <h3>Mes Réalisations</h3>
+    <h5>Des projets qui rendent mon parcours intéressant</h5>
+    <section class="container">
+
+        <div class="projects--wrapper">
+            {% for project in projects %}
+            <div class="project--column">
+                <a href="{% url 'project' project.id %}">
+                    <img class="project--thumbnail" src="{{ project.thumbnail.url }}">
+                </a>
+                <div class="project--body">
+                    <h5>{{ project.title }}</h5>
+                </div>
+            </div>
+            {% empty %}
+            <h3>il n'y a pas de projets dans la base de données...</h3>
+            {% endfor %}
+        </div>
+
+        <div class="about--wrapper">
+
+            <h3>plus à propos de moi</h3>
+            <p>
+                Jeune développeur web issu de la formation de développeur web et web mobile au Greta 92 , je
+                maîtrise
+                les
+                technologies front-end, notamment Html, Css, et JavaScript avec les frameworks Bootstrap et je fait
+                aussi du
+                back-end, et particulièrement Python et PHP.
+            </p>
+            <p>
+                Pour les CMS, je me suis familiarisé avec le WordPressPour
+                la partie gestion de projets, j’ai des connaissances en méthode agile ainsi que l’outil Git pour la
+                gestion
+                de version de projet Je suis à l'écoute d'opportunités en développement de site et application
+                web.Je
+                suis particulièrement intéressé par le développement en langage Python et ses frameworks.
+            </p>
+        </div>
+
+    </section>
+
+    <section class="section--1">
+
+        <div class="skills--container">
+            <h3>plus à propos de moi</h3>
+
+            {% for skill in detailedSkills %}
+            <div class="skill--wrapper">
+                <h5>{{ skill.title }}</h5>
+                <p>{{ skill.body }}</p>
+            </div>
+            {% endfor %}
+
+            <h4>Autres compétences</h4>
+            <div class="other--skills--wrapper">
+                {% for skill in skills %}
+                <div class="skill--tag">
+                    <span>{{ skill.title }}</span>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+    {% endblock content %}
