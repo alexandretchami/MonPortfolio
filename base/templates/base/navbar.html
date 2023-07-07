@@ -12,7 +12,13 @@
         Contact
     </a>
 
-    <a class="nav-link" href="{% url 'add-project' %}">
-        Ajouter un projet
+    {% if request.user.is_authenticated %}
+    <a class="nav-link" href="{% url 'inbox' %}">
+        Boîte de réception
     </a>
+    <a class="nav-link" href="{% url 'add-project' %}">
+        Ajouter un projet 
+    </a>
+    {% endif %}
+
 </section>

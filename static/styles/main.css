@@ -114,8 +114,14 @@ body {
   border-radius: 20px;
 }
 
-.project--image{
+.project--image {
   max-width: 800px;
+}
+
+.contact--form {
+  display: block;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 @media (max-width: 900px) {
@@ -129,7 +135,6 @@ body {
 }
 
 @media (max-width: 800px) {
-
   .hero--content {
     width: 100%;
   }

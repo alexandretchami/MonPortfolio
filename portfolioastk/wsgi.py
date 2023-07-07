@@ -11,6 +11,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'portfolioastk.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "portfolioastk.settings")
 
 application = get_wsgi_application()
+app = application

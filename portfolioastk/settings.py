@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-awkq&eo!9uqtkano^1b#5extlh#)2ol_$i^(0cs@e!0$#zu2o7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".vercel.app", ".now.sh"]
 
 
 # Application definition
@@ -134,3 +134,8 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+import os
+
+STATICFILES_DIRS = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles_build", "static")
