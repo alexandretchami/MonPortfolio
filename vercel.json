@@ -3,7 +3,7 @@
     "builds": [
         {
             "src": "portfolioastk/wsgi.py",
-            "user": "@vercel/python",
+            "use": "@vercel/python",
             "config": {"maxLambdaSize": "15mb", "runtime": "python3.11"}
         },
         {
