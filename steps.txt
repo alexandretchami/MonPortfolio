@@ -1,3 +1,0 @@
-- "Ajouter un projet" à lier à l'en-tête
-- Créer un projet
-- Install CK editor
