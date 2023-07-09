@@ -19,6 +19,7 @@ body {
   height: 50px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .navigation-bar a {
@@ -62,6 +63,7 @@ body {
   font-size: 100px;
   letter-spacing: 0.1em;
   font-weight: 700;
+  line-height: 0.9em;
 }
 
 .description {

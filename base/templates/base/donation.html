@@ -1,0 +1,72 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .donation--wrapper {
+        margin: 0 auto;
+    }
+</style>
+
+<div class="container">
+
+    <div style="width: 300px;" class="card my-3 donation--wrapper">
+        <div class="card-body">
+            <h3>Achetez-moi un café</h3>
+            <p>envisageriez-vous de faire un don de 5€  ?</p>
+            <div id="paypal-button-container"></div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+
+<script>
+    // Render the PayPal button into #paypal-button-container
+
+    paypal.Buttons({
+
+        style: {
+            color: 'blue',
+            shape: 'rect',
+            label: 'pay',
+            height: 40
+        },
+
+
+    }).render('#paypal-button-container');
+
+    paypal.Buttons({
+        // Order is created on the server and the order id is returned
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '5.00'
+                    }
+                }]
+            })
+        },
+        // Finalize the transaction on the server after payer approval
+        onApprove: (data, actions) => {
+            return fetch(`/api/orders/${data.orderID}/capture`, {
+                method: "post",
+            })
+                .then((response) => response.json())
+                .then((orderData) => {
+                    // Successful capture! For dev/demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    const transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+                    // When ready to go live, remove the alert and show a success message within this page. For example:
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                });
+        }
+    }).render('#paypal-button-container');
+
+</script>
+
+{% endblock content %}
