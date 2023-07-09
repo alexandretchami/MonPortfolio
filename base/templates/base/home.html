@@ -43,22 +43,9 @@
 
         <div class="about--wrapper">
 
-            <h3>plus à propos de moi</h3>
+            <h3>{{ skill.title }}</h3>
             <p>
-                Jeune développeur web issu de la formation de développeur web et web mobile au Greta 92 , je
-                maîtrise
-                les
-                technologies front-end, notamment Html, Css, et JavaScript avec les frameworks Bootstrap et je fait
-                aussi du
-                back-end, et particulièrement Python et PHP.
-            </p>
-            <p>
-                Pour les CMS, je me suis familiarisé avec le WordPressPour
-                la partie gestion de projets, j’ai des connaissances en méthode agile ainsi que l’outil Git pour la
-                gestion
-                de version de projet Je suis à l'écoute d'opportunités en développement de site et application
-                web.Je
-                suis particulièrement intéressé par le développement en langage Python et ses frameworks.
+                {{ skill.body }}
             </p>
         </div>
 
@@ -89,6 +76,25 @@
     </section>
 
     <section class="section--2">
+
+        <div class="skills--container">
+            <h3>Récommandations</h3>
+            <a class="btn btn-primary my-3" href="{% url 'add-endorsement' %}">Ajouter une récommandation</a>
+
+            {% for i in endorsements %}
+            <div style="margin-bottom: 1em;" class="card">
+                <div class="card-body">
+                    <h5>{{ i.name }}</h5>
+                    <p>{{ i.body }}</p>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </section>
+
+    <section class="section--1">
         <div class="container">
             <form class="contact--form" method="POST">
                 {% csrf_token %}

@@ -3,24 +3,18 @@
 {% block content %}
 
 <div class="container">
-    <h3>Formulaire de projet</h3>
-
-    <form method="POST" enctype="multipart/form-data">
+    <h3>Ajouter une récommandation</h3>
+    <form method="post">
         {% csrf_token %}
-        {{ form.media }}
-        
-        {% for field in form %}
 
+        {% for field in form %}
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">{{field.label}}</label>
             {{ field }}
         </div>
-
         {% endfor %}
-
         <input class="btn btn-primary" type="submit" value="soumettre">
-        
     </form>
 </div>
 
-{% endblock %}
+{% endblock content %}
