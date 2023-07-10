@@ -18,20 +18,6 @@
 
 <script>
 
-    let loadData = () => {
-        fetch("http://127.0.0.1:8000/api/", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json,
-            },
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
-    }
-
-    loadData()
-    
-    let renderChart = () => {
 
     Highcharts.chart('container', {
         chart: {
@@ -60,11 +46,11 @@
         series: [
             {
                 name: 'Backend Dev',
-                data: [49.9]
+                data: [89.9]
             },
             {
                 name: 'Frontend Dev',
-                data: [83.6]
+                data: [43.6]
             },
             {
                 name: 'FullStack Dev',
@@ -73,8 +59,6 @@
         ]
     });
 
-    }
-    renderChart()
 </script>
 
 {% endblock content %}
