@@ -1,0 +1,80 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+<div class="container">
+
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+
+    </figure>
+
+
+
+</div>
+
+<script>
+
+    let loadData = () => {
+        fetch("http://127.0.0.1:8000/api/", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json,
+            },
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+    }
+
+    loadData()
+    
+    let renderChart = () => {
+
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Types de développeurs'
+        },
+        subtitle: {
+            text:
+                'Tchamidev'
+        },
+
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Total'
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [
+            {
+                name: 'Backend Dev',
+                data: [49.9]
+            },
+            {
+                name: 'Frontend Dev',
+                data: [83.6]
+            },
+            {
+                name: 'FullStack Dev',
+                data: [48.9]
+            }
+        ]
+    });
+
+    }
+    renderChart()
+</script>
+
+{% endblock content %}
