@@ -140,6 +140,7 @@ body {
 .skill--logo {
   width: 60px;
   object-fit: contain;
+  border-radius: 50%;
 }
 
 .other--skills--wrapper {
